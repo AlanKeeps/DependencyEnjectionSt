@@ -1,12 +1,9 @@
 package com.example.dependencyinjectionstart.example2.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.dependencyinjectionstart.R
-import com.example.dependencyinjectionstart.example1.Activity
-import com.example.dependencyinjectionstart.example2.di.ContextModule
 import com.example.dependencyinjectionstart.example2.di.DaggerApplicationComponent
-import com.example.dependencyinjectionstart.example2.di.DataModule
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -15,7 +12,11 @@ class MainActivity : AppCompatActivity() {
     lateinit var viewModel: ExampleViewModel
 
     private val component by lazy {
-        DaggerApplicationComponent.builder().contextModule(ContextModule(application)).build()
+        DaggerApplicationComponent
+            .builder()
+            .context(application)
+            .timeMillis(System.currentTimeMillis())
+            .build()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
