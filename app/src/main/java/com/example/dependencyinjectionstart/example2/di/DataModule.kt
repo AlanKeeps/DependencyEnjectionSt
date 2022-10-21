@@ -8,7 +8,7 @@ import dagger.Binds
 import dagger.Module
 
 @Module
-interface  DataModule {
+interface DataModule {
 
     @Binds
     fun bindLocalDataSource(impl: ExampleLocalDataSourceImpl): ExampleLocalDataSource
